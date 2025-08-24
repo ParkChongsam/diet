@@ -19,7 +19,7 @@ const getLast7DaysData = (history: DailyIntake[], goal: number) => {
         
         const historyItem = history.find(h => h.date === dateString);
         data.push({
-            name: date.toLocaleDateString('en-US', { weekday: 'short' }),
+            name: date.toLocaleDateString('ko-KR', { weekday: 'short' }),
             date: dateString,
             kcal: historyItem?.total_kcal || 0,
             goal: goal
@@ -37,8 +37,8 @@ export const HistoryDashboard: React.FC<HistoryDashboardProps> = ({ history, goa
       return (
         <div className="bg-white p-3 rounded-lg shadow-md border border-gray-200">
           <p className="font-bold text-gray-800">{label}</p>
-          <p className="text-brand-primary">{`Intake: ${data.kcal.toLocaleString()} kcal`}</p>
-          <p className="text-gray-500">{`Goal: ${data.goal.toLocaleString()} kcal`}</p>
+          <p className="text-brand-primary">{`섭취량: ${data.kcal.toLocaleString()} kcal`}</p>
+          <p className="text-gray-500">{`목표: ${data.goal.toLocaleString()} kcal`}</p>
         </div>
       );
     }
@@ -47,7 +47,7 @@ export const HistoryDashboard: React.FC<HistoryDashboardProps> = ({ history, goa
 
   return (
     <div className="bg-white rounded-2xl shadow-lg border border-gray-200 p-6">
-      <h2 className="text-2xl font-bold text-gray-800 mb-4">Weekly Summary</h2>
+      <h2 className="text-2xl font-bold text-gray-800 mb-4">주간 요약</h2>
       <div style={{ width: '100%', height: 300 }}>
         <ResponsiveContainer>
           <BarChart data={chartData} margin={{ top: 5, right: 20, left: -10, bottom: 5 }}>

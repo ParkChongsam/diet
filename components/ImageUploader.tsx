@@ -43,26 +43,26 @@ export const ImageUploader: React.FC<ImageUploaderProps> = ({ onUpload }) => {
         <div className="flex flex-col items-center justify-center">
             <UploadIcon className="w-16 h-16 text-gray-400 mb-4" />
             <h2 className="text-xl font-semibold text-gray-700">
-            {isDragActive ? 'Drop the image here' : 'Drag & drop a meal photo or click to select'}
+            {isDragActive ? '여기에 이미지를 놓으세요' : '식사 사진을 드래그하거나 클릭해서 선택하세요'}
             </h2>
-            <p className="text-gray-500 mt-2">Supports JPEG, PNG. Max 10MB.</p>
+            <p className="text-gray-500 mt-2">JPEG, PNG 형식 지원. 최대 10MB.</p>
             {error && <p className="text-red-500 mt-4 font-semibold">{error}</p>}
         </div>
       </div>
        <div className="mt-8">
-            <h3 className="text-2xl font-bold text-gray-800">How It Works</h3>
+            <h3 className="text-2xl font-bold text-gray-800">작동 방식</h3>
             <div className="grid md:grid-cols-3 gap-6 mt-4 text-left max-w-4xl mx-auto">
                 <div className="bg-gray-100 p-4 rounded-lg">
-                    <div className="font-bold text-brand-dark">1. Upload Photo</div>
-                    <p className="text-sm text-gray-600">Snap a picture of your meal and upload it.</p>
+                    <div className="font-bold text-brand-dark">1. 사진 업로드</div>
+                    <p className="text-sm text-gray-600">식사 사진을 찍어 업로드하세요.</p>
                 </div>
                 <div className="bg-gray-100 p-4 rounded-lg">
-                    <div className="font-bold text-brand-dark">2. AI Analysis</div>
-                    <p className="text-sm text-gray-600">Our AI identifies each food item and estimates its calories.</p>
+                    <div className="font-bold text-brand-dark">2. AI 분석</div>
+                    <p className="text-sm text-gray-600">AI가 각 음식 항목을 식별하고 칼로리를 추정합니다.</p>
                 </div>
                 <div className="bg-gray-100 p-4 rounded-lg">
-                    <div className="font-bold text-brand-dark">3. Track Your Day</div>
-                    <p className="text-sm text-gray-600">Confirm the items to add them to your daily total.</p>
+                    <div className="font-bold text-brand-dark">3. 하루 기록</div>
+                    <p className="text-sm text-gray-600">항목을 확인하여 일일 섭취량에 추가하세요.</p>
                 </div>
             </div>
         </div>

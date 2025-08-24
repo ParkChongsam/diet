@@ -2,7 +2,7 @@ import { GoogleGenAI, Type } from "@google/genai";
 import type { FoodItem } from '../types';
 
 if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable not set.");
+    throw new Error("API_KEY 환경 변수가 설정되지 않았습니다.");
 }
 
 const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
@@ -14,15 +14,15 @@ const responseSchema = {
         properties: {
             foodName: {
                 type: Type.STRING,
-                description: "The common name of the food item identified. Be specific (e.g., 'fried chicken thigh' not just 'chicken').",
+                description: "식별된 음식의 일반적인 이름. 구체적으로 작성해주세요 (예: '치킨'이 아닌 '프라이드 치킨 다리').",
             },
             calories: {
                 type: Type.NUMBER,
-                description: "A realistic estimate of the calories for the portion of this specific food item shown in the image.",
+                description: "이미지에 보이는 특정 음식 부분에 대한 현실적인 칼로리 추정치.",
             },
             servingSizeGrams: {
                 type: Type.NUMBER,
-                description: "A realistic estimate of the serving size in grams for the portion of this specific food item shown in the image.",
+                description: "이미지에 보이는 특정 음식 부분에 대한 현실적인 그램 단위 양 추정치.",
             },
         },
         required: ["foodName", "calories", "servingSizeGrams"],
@@ -39,11 +39,11 @@ export const analyzeImageForFood = async (base64Image: string): Promise<Omit<Foo
     
     const textPart = {
         text: `
-          Identify each distinct food item in this image.
-          For each item, provide a reasonable estimate for its calorie count and serving size in grams based on the portion shown.
-          Provide only the list of food items as a JSON object that adheres to the provided schema.
-          If a food item is not clearly identifiable, do not include it.
-          Your response must be a valid JSON array.
+          이 이미지에 있는 각각의 음식 항목을 식별해주세요.
+          각 항목에 대해, 사진에 보이는 양을 기준으로 칼로리 수치와 그램 단위의 양을 합리적으로 추정해주세요.
+          제공된 스키마를 준수하는 JSON 객체로 음식 항목 목록만 제공해주세요.
+          명확하게 식별할 수 없는 음식은 포함하지 마세요.
+          응답은 반드시 유효한 JSON 배열이어야 합니다.
         `,
     };
 
@@ -61,13 +61,13 @@ export const analyzeImageForFood = async (base64Image: string): Promise<Omit<Foo
         const parsedJson = JSON.parse(jsonText);
 
         if (!Array.isArray(parsedJson)) {
-            throw new Error('AI response is not a valid array.');
+            throw new Error('AI 응답이 유효한 배열이 아닙니다.');
         }
 
         return parsedJson as Omit<FoodItem, 'id'>[];
 
     } catch (error) {
-        console.error("Error calling Gemini API:", error);
-        throw new Error("The AI model failed to process the image. This could be due to a network issue, invalid image, or a problem with the AI service.");
+        console.error("Gemini API 호출 오류:", error);
+        throw new Error("AI 모델이 이미지를 처리하지 못했습니다. 네트워크 문제, 잘못된 이미지 또는 AI 서비스 문제일 수 있습니다.");
     }
 };

@@ -33,7 +33,7 @@ export const FoodItemCard: React.FC<FoodItemCardProps> = ({ item, onChange, onDe
         />
         <div className="flex items-center space-x-4 mt-2 text-sm text-gray-600">
           <div>
-            <label className="block text-xs text-gray-500">Calories</label>
+            <label className="block text-xs text-gray-500">칼로리</label>
             <div className="flex items-center">
               <input 
                 type="number"
@@ -45,7 +45,7 @@ export const FoodItemCard: React.FC<FoodItemCardProps> = ({ item, onChange, onDe
             </div>
           </div>
           <div>
-            <label className="block text-xs text-gray-500">Serving</label>
+            <label className="block text-xs text-gray-500">양</label>
             <div className="flex items-center">
                 <input 
                     type="number"
@@ -53,7 +53,7 @@ export const FoodItemCard: React.FC<FoodItemCardProps> = ({ item, onChange, onDe
                     onChange={(e) => setServingSize(Math.max(0, parseInt(e.target.value) || 0))}
                     className="w-20 bg-white border border-gray-300 rounded-md px-2 py-1 focus:ring-brand-primary focus:border-brand-primary"
                 />
-                 <span className="ml-2">grams</span>
+                 <span className="ml-2">그램</span>
             </div>
           </div>
         </div>

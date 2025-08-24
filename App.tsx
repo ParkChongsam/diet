@@ -48,7 +48,7 @@ const App: React.FC = () => {
       try {
         const base64Image = (reader.result as string).split(',')[1];
         if (!base64Image) {
-          throw new Error('Failed to read image file.');
+          throw new Error('이미지 파일을 읽는데 실패했습니다.');
         }
         
         setImagePreview(reader.result as string);
@@ -60,16 +60,16 @@ const App: React.FC = () => {
 
       } catch (err) {
         console.error(err);
-        setError(err instanceof Error ? err.message : 'An unknown error occurred during analysis.');
-        setToast({ type: 'error', message: 'Failed to analyze image. Please try again.' });
+        setError(err instanceof Error ? err.message : '분석 중 알 수 없는 오류가 발생했습니다.');
+        setToast({ type: 'error', message: '이미지 분석에 실패했습니다. 다시 시도해주세요.' });
       } finally {
         setIsLoading(false);
       }
     };
     reader.onerror = () => {
         setIsLoading(false);
-        setError('Failed to read file.');
-        setToast({ type: 'error', message: 'Could not read the image file.' });
+        setError('파일을 읽는데 실패했습니다.');
+        setToast({ type: 'error', message: '이미지 파일을 읽을 수 없습니다.' });
     };
   };
 
@@ -81,9 +81,9 @@ const App: React.FC = () => {
     const goalReachedAfter = newDailyTotal >= dailyGoal;
 
     if (!goalReachedBefore && goalReachedAfter) {
-       setToast({ type: 'success', message: `Goal of ${dailyGoal} kcal reached!` });
+       setToast({ type: 'success', message: `목표 ${dailyGoal}kcal를 달성했습니다!` });
     } else if (dailyTotal < dailyGoal && newDailyTotal > dailyGoal) {
-        setToast({ type: 'warning', message: `You've exceeded your daily goal!` });
+        setToast({ type: 'warning', message: `일일 목표를 초과했습니다!` });
     }
 
     setDailyTotal(newDailyTotal);
@@ -117,20 +117,20 @@ const App: React.FC = () => {
           {isLoading && (
             <div className="flex flex-col items-center justify-center p-16 bg-white rounded-2xl shadow-lg border border-gray-200 text-center">
               <LoadingSpinner className="w-16 h-16 text-brand-primary mb-6" />
-              <h2 className="text-2xl font-bold text-gray-700">Analyzing your meal...</h2>
-              <p className="text-gray-500 mt-2">Our AI is identifying food items and estimating calories. This may take a moment.</p>
+              <h2 className="text-2xl font-bold text-gray-700">식사를 분석하고 있어요...</h2>
+              <p className="text-gray-500 mt-2">AI가 음식 항목을 식별하고 칼로리를 추정하고 있습니다. 잠시만 기다려주세요.</p>
             </div>
           )}
 
           {error && !isLoading && (
             <div className="p-8 bg-red-50 border border-red-200 rounded-2xl text-center">
-              <h3 className="text-xl font-semibold text-red-700">Analysis Failed</h3>
+              <h3 className="text-xl font-semibold text-red-700">분석 실패</h3>
               <p className="text-red-600 mt-2">{error}</p>
               <button
                 onClick={handleClearRecognition}
                 className="mt-4 px-6 py-2 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors"
               >
-                Try Again
+                다시 시도
               </button>
             </div>
           )}
@@ -155,7 +155,7 @@ const App: React.FC = () => {
           onSave={(newGoal) => {
             setDailyGoal(newGoal);
             setIsSettingsOpen(false);
-            setToast({ type: 'success', message: 'Daily goal updated successfully!' });
+            setToast({ type: 'success', message: '일일 목표가 성공적으로 업데이트되었습니다!' });
           }} 
           onClose={() => setIsSettingsOpen(false)}
         />

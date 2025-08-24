@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ dailyTotal, dailyGoal, onSetting
         <div className="flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <LogoIcon className="h-8 w-8 text-brand-primary" />
-            <h1 className="text-2xl font-bold text-gray-800 tracking-tight">Calorie Vision</h1>
+            <h1 className="text-2xl font-bold text-gray-800 tracking-tight">칼로리 비전</h1>
           </div>
           <div className="flex items-center space-x-4">
              <div className="w-48 hidden sm:block">
@@ -39,7 +39,7 @@ export const Header: React.FC<HeaderProps> = ({ dailyTotal, dailyGoal, onSetting
              <button
               onClick={onSettingsClick}
               className="p-2 rounded-full text-gray-500 hover:bg-gray-100 hover:text-gray-800 focus:outline-none focus:ring-2 focus:ring-brand-primary focus:ring-offset-2 transition-colors"
-              aria-label="Open settings"
+              aria-label="설정 열기"
             >
               <SettingsIcon className="h-6 w-6" />
             </button>

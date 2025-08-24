@@ -1,0 +1,5 @@
+{
+  "name": "Calorie Vision",
+  "description": "An AI-powered web application that estimates the calorie content of food from a single photograph. Upload a picture of your meal, and our vision AI will identify the food items, estimate their calories, and help you track your daily intake against your goals.",
+  "requestFramePermissions": []
+}
